@@ -3,6 +3,14 @@ pipeline {
     agent {
         label 'built-in'
     }
+
+    parameters {
+        string(
+            name: 'SLEEP_COMMAND_ARGS',
+            description: 'arguments to sleep command'
+        )
+    }
+
     stages {
         stage('testing') {
             steps {
