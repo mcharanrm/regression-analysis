@@ -31,6 +31,13 @@ pipeline {
                     job: 'topsail',
                     waitForStart: 'true'
                 )
+
+                // Now build a parameterized job
+                build(
+                    job: 'regression'
+                    waitForStart: 'true'
+                    parameters: [string(name: 'SLEEP_COMMAND_ARGS', defaultValue: "${params.ARGS_SLEEP}")]
+                )
             }
             // Multuple steps sections are not allowed in one single stage block
             /*
