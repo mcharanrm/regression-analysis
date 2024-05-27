@@ -36,7 +36,7 @@ pipeline {
                 build(
                     job: 'regression',
                     waitForStart: 'true',
-                    parameters: [string(name: 'SLEEP_COMMAND_ARGS', defaultValue: "${params.ARGS_SLEEP}")]
+                    parameters: [string(name: 'SLEEP_COMMAND_ARGS', value: "${params.ARGS_SLEEP}")]
                 )
             }
             // Multuple steps sections are not allowed in one single stage block
