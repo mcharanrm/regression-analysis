@@ -25,6 +25,12 @@ pipeline {
                     time: "${params.ARGS_SLEEP}",
                     unit: 'SECONDS'
                 )
+
+                // Build a job
+                build(
+                    job: 'topsail',
+                    waitForStart: 'true'
+                )
             }
             // Multuple steps sections are not allowed in one single stage block
             /*
@@ -35,3 +41,4 @@ pipeline {
         }
     }
 }
+
