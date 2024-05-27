@@ -14,10 +14,13 @@ pipeline {
             steps {
                 // Use one of the pipeline basic steps to get started
                 echo "Hello World !"
+                sleep time: "${params.ARGS_SLEEP}", unit: 'SECONDS'
             }
+            /*
             steps {
                 sleep time: "${params.ARGS_SLEEP}", unit: 'SECONDS'
             }
+            */
         }
     }
 }
