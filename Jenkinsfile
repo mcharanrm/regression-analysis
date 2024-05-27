@@ -34,8 +34,8 @@ pipeline {
 
                 // Now build a parameterized job
                 build(
-                    job: 'regression'
-                    waitForStart: 'true'
+                    job: 'regression',
+                    waitForStart: 'true',
                     parameters: [string(name: 'SLEEP_COMMAND_ARGS', defaultValue: "${params.ARGS_SLEEP}")]
                 )
             }
