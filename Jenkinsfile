@@ -38,6 +38,14 @@ pipeline {
                     waitForStart: 'true',
                     parameters: [string(name: 'SLEEP_COMMAND_ARGS', value: "${params.ARGS_SLEEP}")]
                 )
+
+                // Now, lets imagine one of the existing jobs as a remote job and trigger using Parameterized Remote Trigger Plugin
+
+                triggerRemoteJob(
+                    job: 'http://localhost:8080/job/regression-analysis/job/topsail',
+                    auth: CredentialsAuth(credentials: 'JENKINS_BASIC_AUTH'),
+                    pollInterval: 1
+                )
             }
             // Multuple steps sections are not allowed in one single stage block
             /*
