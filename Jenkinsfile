@@ -26,6 +26,12 @@ pipeline {
                     unit: 'SECONDS'
                 )
 
+                /*
+                The following builds doesn't track the exit status of the upstream job.
+                So we need a way to capture it and handle it in order to control
+                the pipeline execution flow.
+                */
+
                 // Build a job
                 build(
                     job: 'topsail',
