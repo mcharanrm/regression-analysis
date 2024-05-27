@@ -18,7 +18,7 @@ pipeline {
                 echo "Hello World !"
 
                 // Run an another pipeline step using sleep
-                sleep time: "${SLEEP_COMMAND_ARGS}" unit: 'SECONDS'
+                sleep time: "${SLEEP_COMMAND_ARGS}", unit: 'SECONDS'
             }
         }
     }
