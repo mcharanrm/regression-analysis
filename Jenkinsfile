@@ -60,7 +60,7 @@ pipeline {
                 )
 
             }
-            // Multuple steps sections are not allowed in one single stage block
+            // Multiple `steps` sections are not allowed within one single `stage` block
             /*
             steps {
                 sleep time: "${params.ARGS_SLEEP}", unit: 'SECONDS'
