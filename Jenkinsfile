@@ -15,6 +15,10 @@ pipeline {
             required: true
         )
     }
+
+    environment{
+        HOST_INVENTORY = credentials('${params.HOST_INVENTORY}')
+    }
     stages {
         stage('testing') {
             // steps section refers to individual pipeline steps/plugins
@@ -32,14 +36,16 @@ pipeline {
                     unit: 'SECONDS'
                 )
 
+
+
                 echo "Lets see what is available in KUBE_CONFIG secret file"
                 sh(
                     script: """#! /bin/bash
                     echo 'Reading a secret host inventory file'
-                    echo -e ${params.HOST_INVENTORY}
+                    echo -e ${HOST_INVENTORY}
                     
                     echo 'Running a ansible command on host inventory'
-                    ansible fake_hosts -i ${params.HOST_INVENTORY} -m ping
+                    ansible fake_hosts -i ${HOST_INVENTORY} -m ping
                     """
                 )
 
