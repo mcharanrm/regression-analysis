@@ -11,7 +11,7 @@ pipeline {
 
         credentials(
             credentialType: 'org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl',
-            name: 'KUBE_CONFIG',
+            name: 'HOST_INVENTORY',
             required: true
         )
     }
@@ -35,8 +35,11 @@ pipeline {
                 echo "Lets see what is available in KUBE_CONFIG secret file"
                 sh(
                     script: '''#! /bin/bash
-                    echo 'Reading Secret file'
-                    echo -e "$KUBE_CONFIG"
+                    echo 'Reading a secret host inventory file'
+                    echo -e "${params.HOST_INVENTORY}"
+                    
+                    echo 'Running a ansible command on host inventory'
+                    ansible fake_hosts -i "${params.HOST_INVENTORY}" -m ping
                     '''
                 )
 
