@@ -36,7 +36,7 @@ pipeline {
                 sh(
                     script: '''#! /bin/bash
                     echo 'Reading Secret file'
-                    cat $KUBE_CONFIG
+                    echo -e "$KUBE_CONFIG"
                     '''
                 )
 
