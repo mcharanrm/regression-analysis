@@ -8,6 +8,12 @@ pipeline {
             name: 'ARGS_SLEEP',
             description: 'Provide an argument to the sleep command'
         )
+
+        credentials(
+            credentialType: 'org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl',
+            name: 'KUBE_CONFIG',
+            required: true
+        )
     }
     stages {
         stage('testing') {
@@ -24,6 +30,14 @@ pipeline {
                 sleep(
                     time: "${params.ARGS_SLEEP}",
                     unit: 'SECONDS'
+                )
+
+                echo "Lets see what is available in KUBE_CONFIG secret file"
+                sh(
+                    script: '''!/bin/bash
+                    echo 'Reading Secret file'
+                    cat $KUBE_CONFIG
+                    '''
                 )
 
                 /*
