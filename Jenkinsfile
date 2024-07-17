@@ -34,7 +34,7 @@ pipeline {
 
                 echo "Lets see what is available in KUBE_CONFIG secret file"
                 sh(
-                    script: '''!/bin/bash
+                    script: '''#! /bin/bash
                     echo 'Reading Secret file'
                     cat $KUBE_CONFIG
                     '''
