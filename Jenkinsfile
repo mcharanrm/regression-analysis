@@ -36,10 +36,10 @@ pipeline {
                 sh(
                     script: '''#! /bin/bash
                     echo 'Reading a secret host inventory file'
-                    echo -e "${params.HOST_INVENTORY}"
+                    echo -e ${params.HOST_INVENTORY}
                     
                     echo 'Running a ansible command on host inventory'
-                    ansible fake_hosts -i "${params.HOST_INVENTORY}" -m ping
+                    ansible fake_hosts -i ${params.HOST_INVENTORY} -m ping
                     '''
                 )
 
