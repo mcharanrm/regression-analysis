@@ -17,7 +17,7 @@ pipeline {
     }
 
     environment{
-        HOST_INVENTORY = credentials('${params.HOST_INVENTORY}')
+        HOST_INVENTORY = credentials("${params.HOST_INVENTORY}")
     }
     stages {
         stage('testing') {
