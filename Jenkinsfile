@@ -40,13 +40,13 @@ pipeline {
 
                 echo "Lets see what is available in HOST_INVENTORY secret file"
                 sh(
-                    script: """#! /bin/bash
+                    script: '''#! /bin/bash
                     echo 'Reading a secret host inventory file'
                     cat ${HOST_INVENTORY}
                     
                     echo 'Running a ansible command on host inventory'
                     ansible fake_hosts -i ${HOST_INVENTORY} -m ping
-                    """
+                    '''
                 )
 
                 /*
